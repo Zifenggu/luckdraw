@@ -92,12 +92,39 @@ class SetupManager {
         const text = document.getElementById('participantNumbers').value;
         if (!text.trim()) return [];
         
-        const numbers = text.split(/[\s,\n]+/)
+        const tokens = text.split(/[\s,\n]+/)
             .map(n => n.trim())
-            .filter(n => n.length > 0)
-            .filter((v, i, a) => a.indexOf(v) === i);
+            .filter(n => n.length > 0);
         
-        return numbers;
+        const numbers = [];
+        
+        tokens.forEach(token => {
+            // Check if token is a range (e.g., "1-100")
+            const rangeMatch = token.match(/^(\d+)-(\d+)$/);
+            if (rangeMatch) {
+                const start = parseInt(rangeMatch[1]);
+                const end = parseInt(rangeMatch[2]);
+                
+                if (start <= end) {
+                    for (let i = start; i <= end; i++) {
+                        numbers.push(String(i));
+                    }
+                } else {
+                    // If start > end, reverse the range
+                    for (let i = start; i >= end; i--) {
+                        numbers.push(String(i));
+                    }
+                }
+            } else {
+                // Regular number token
+                numbers.push(token);
+            }
+        });
+        
+        // Remove duplicates
+        const uniqueNumbers = numbers.filter((v, i, a) => a.indexOf(v) === i);
+        
+        return uniqueNumbers;
     }
 
     handleFileUpload(e) {
