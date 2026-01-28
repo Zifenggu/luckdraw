@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🎉 Lucky Draw System</h1>
+        <div>
+            <a href="setup.html" class="btn btn-secondary">⚙️ Setup</a>
+            <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="drawingSection" class="section active">
+            <div class="draw-controls">
+                <h2>Current Award: <span id="currentAwardName">-</span></h2>
+                <p>Remaining: <span id="remainingCount">-</span> winners</p>
+            </div>
+
+            <div class="draw-display">
+                <div id="drawAnimation" class="draw-animation">
+                    <div id="rollingNumber" class="rolling-number">----</div>
+                </div>
+            </div>
+
+            <div class="draw-controls">
+                <button id="drawBtn" class="btn btn-primary btn-large">🎲 Draw Winner</button>
+                <button id="nextAwardBtn" class="btn btn-secondary" style="display: none;">Next Award Level</button>
+                <button id="viewResultsBtn" class="btn btn-secondary" style="display: none;">View All Results</button>
+            </div>
+
+            <div class="winners-panel">
+                <h3>Winners for <span id="currentAwardWinnersTitle">Current Award</span></h3>
+                <div id="currentWinners" class="winners-list"></div>
+            </div>
+
+            <div id="noConfigMessage" class="info-card" style="display: none;">
+                <h3>⚠️ No Configuration Found</h3>
+                <p>Please configure participants and awards first.</p>
+                <a href="setup.html" class="btn btn-primary">Go to Setup</a>
+            </div>
+        </section>
+
+        <section id="resultsSection" class="section">
+            <h2>All Winners</h2>
+            <div id="allResults" class="results-container"></div>
+            <div class="results-actions">
+                <button id="exportResultsBtn" class="btn btn-primary">Export Results</button>
+                <button id="backToDrawBtn" class="btn btn-secondary">Back to Draw</button>
+                <button id="newDrawBtn" class="btn btn-secondary">New Lucky Draw</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="draw.js"></script>
+</body>
+</html>

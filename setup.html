@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw Setup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🎉 Lucky Draw System - Setup</h1>
+        <div>
+            <a href="draw.html" class="btn btn-secondary">🎲 Draw</a>
+            <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="setupSection" class="section active">
+            <h2>Configure Lucky Draw</h2>
+            
+            <div class="setup-card">
+                <h3>1. Upload Participant Numbers</h3>
+                <div class="form-group">
+                    <label for="participantNumbers">Enter participant numbers (comma or line separated):</label>
+                    <textarea id="participantNumbers" rows="8" placeholder="e.g., 1001, 1002, 1003 or one per line"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Or upload from file:</label>
+                    <input type="file" id="participantFile" accept=".txt,.csv">
+                </div>
+                <p class="info-text">Total participants: <span id="participantCount">0</span></p>
+            </div>
+
+            <div class="setup-card">
+                <h3>2. Configure Awards</h3>
+                <p class="help-text">Add different award levels and specify how many winners for each.</p>
+                <div id="awardsList"></div>
+                <button id="addAwardBtn" class="btn btn-secondary">+ Add Award Level</button>
+            </div>
+
+            <div class="setup-card">
+                <h3>3. Summary</h3>
+                <div class="summary-info">
+                    <p><strong>Total Participants:</strong> <span id="summaryParticipants">0</span></p>
+                    <p><strong>Total Awards:</strong> <span id="summaryAwards">0</span></p>
+                    <p><strong>Total Winners:</strong> <span id="summaryWinners">0</span></p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="saveConfigBtn" class="btn btn-primary btn-large">💾 Save Configuration</button>
+                <button id="saveAndDrawBtn" class="btn btn-success btn-large">💾 Save & Start Drawing</button>
+            </div>
+
+            <div id="statusMessage" class="status-message"></div>
+        </section>
+    </div>
+
+    <script src="setup.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <h1>🎉 Lucky Draw System</h1>
+            <p class="subtitle">School Event</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p id="loginError" class="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Default credentials
+        const credentials = {
+            username: 'admin',
+            password: 'school2024'
+        };
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === credentials.username && password === credentials.password) {
+                sessionStorage.setItem('luckyDrawLoggedIn', 'true');
+                window.location.href = 'draw.html';
+            } else {
+                document.getElementById('loginError').textContent = 'Invalid username or password';
+            }
+        });
+    </script>
+</body>
+</html>
